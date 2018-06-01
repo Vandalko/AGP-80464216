@@ -1,7 +1,7 @@
 # AGP-80464216
 Android Gradle Plugin bug https://issuetracker.google.com/issues/80464216
 
-To reproduce, run: ./gradlew integrationTestFor-s -s
+To reproduce, run: `./gradlew integrationTestFor-s -s`
 
 
 When trying to execute another project through `GradleBuild`, I get `IllegalMonitorStateException`.
