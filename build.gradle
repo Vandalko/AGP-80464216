@@ -14,10 +14,10 @@ dependencies {
 
 tasks.addRule("integrationTestFor-<SampleName>") { String taskName ->
     if (taskName.startsWith("integrationTestFor-")) {
-        File projectDir = file('/home/vandalko/dev/workspace/SampleGradle/app')
+        File projectDir = new File(rootProject.projectDir, 'SampleGradle/app')
         tasks.create(taskName, GradleBuild) {
             dir = projectDir
-            buildFile = new File(rootProject.projectDir, 'SampleGradle/app/build.gradle')
+            buildFile = new File(projectDir, 'build.gradle')
             tasks = ['clean', 'check']
             startParameter.buildCacheEnabled = false
             startParameter.configureOnDemand = false
