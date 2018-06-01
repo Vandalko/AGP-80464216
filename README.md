@@ -41,6 +41,13 @@ OS:           Linux 4.15.0-22-generic amd64
 
 ```
 
+gradle.properties
+```
+org.gradle.daemon=false
+org.gradle.java.home=/usr/lib/jvm/java-8-oracle
+org.gradle.jvmargs=-Xmx2g -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8
+```
+
 ```
 * Exception is:
 java.lang.IllegalMonitorStateException: attempt to unlock read lock, not locked by current thread
