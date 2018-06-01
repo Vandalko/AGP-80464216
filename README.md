@@ -48,8 +48,8 @@ org.gradle.java.home=/usr/lib/jvm/java-8-oracle
 org.gradle.jvmargs=-Xmx2g -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8
 ```
 
+Exception is:
 ```
-* Exception is:
 java.lang.IllegalMonitorStateException: attempt to unlock read lock, not locked by current thread
         at java.util.concurrent.locks.ReentrantReadWriteLock$Sync.unmatchedUnlockException(ReentrantReadWriteLock.java:444)
         at java.util.concurrent.locks.ReentrantReadWriteLock$Sync.tryReleaseShared(ReentrantReadWriteLock.java:428)
