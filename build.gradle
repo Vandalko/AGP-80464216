@@ -1,0 +1,29 @@
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+tasks.addRule("integrationTestFor-<SampleName>") { String taskName ->
+    if (taskName.startsWith("integrationTestFor-")) {
+        File projectDir = file('/home/vandalko/dev/workspace/SampleGradle/app')
+        tasks.create(taskName, GradleBuild) {
+            dir = projectDir
+            buildFile = new File(rootProject.projectDir, 'SampleGradle/app/build.gradle')
+            tasks = ['clean', 'check']
+            startParameter.buildCacheEnabled = false
+            startParameter.configureOnDemand = false
+            startParameter.setParallelProjectExecutionEnabled(false)
+            startParameter.projectProperties['android.enableBuildScriptClasspathCheck'] = 'false'
+            startParameter.projectProperties['android.enableIncrementalDesugaring'] = 'false'
+        }
+    }
+}
