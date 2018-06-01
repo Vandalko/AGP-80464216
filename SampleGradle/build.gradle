@@ -25,19 +25,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-tasks.addRule("integrationTestFor-<SampleName>") { String taskName ->
-    if (taskName.startsWith("integrationTestFor-")) {
-        File projectDir = file("$projectDir/app")
-        tasks.create(taskName, GradleBuild) {
-            dir = projectDir
-            buildFile = new File(projectDir, "build.gradle")
-            tasks = ['clean', 'check']
-            startParameter.buildCacheEnabled = false
-            startParameter.configureOnDemand = false
-            startParameter.setParallelProjectExecutionEnabled(false)
-            startParameter.projectProperties['android.enableBuildScriptClasspathCheck'] = 'false'
-            startParameter.projectProperties['android.enableIncrementalDesugaring'] = 'false'
-        }
-    }
-}
